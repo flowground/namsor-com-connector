@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "logger": {
+            "required": true,
+            "type": "string"
+        },
+        "level": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

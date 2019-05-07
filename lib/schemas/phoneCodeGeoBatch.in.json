@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "personalNamesWithPhoneNumbers": {
+                    "items": {
+                        "properties": {
+                            "countryIso2": {
+                                "type": "string"
+                            },
+                            "countryIso2Alt": {
+                                "type": "string"
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "id": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "phoneNumber": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object",
+                        "xml": {
+                            "name": "FirstLastNamePhoneNumberGeoIn"
+                        }
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object",
+            "xml": {
+                "name": "BatchFirstLastNamePhoneNumberGeoIn"
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "personalNameFull": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

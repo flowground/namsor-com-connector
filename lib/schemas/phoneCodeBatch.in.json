@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "personalNamesWithPhoneNumbers": {
+                    "items": {
+                        "properties": {
+                            "firstName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "id": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "phoneNumber": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object",
+                        "xml": {
+                            "name": "FirstLastNamePhoneNumberIn"
+                        }
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object",
+            "xml": {
+                "name": "BatchFirstLastNamePhoneNumberIn"
+            }
+        }
+    }
+}

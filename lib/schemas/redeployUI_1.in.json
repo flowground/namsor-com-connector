@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "live": {
+            "required": true,
+            "type": "boolean"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "personalNames": {
+                    "items": {
+                        "properties": {
+                            "countryIso2": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "id": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "name": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            }
+                        },
+                        "type": "object",
+                        "xml": {
+                            "name": "PersonalNameGeoIn"
+                        }
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object",
+            "xml": {
+                "name": "BatchPersonalNameGeoIn"
+            }
+        }
+    }
+}

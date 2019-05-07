@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "chineseSurnameLatin": {
+            "required": true,
+            "type": "string"
+        },
+        "chineseGivenNameLatin": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "firstName": {
+            "required": true,
+            "type": "string"
+        },
+        "lastName": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

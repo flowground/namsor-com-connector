@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "planName": {
+            "required": true,
+            "type": "string"
+        },
+        "token": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

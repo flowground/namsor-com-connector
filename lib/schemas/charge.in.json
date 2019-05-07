@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "stripeEmail": {
+                    "type": "string"
+                },
+                "stripeToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

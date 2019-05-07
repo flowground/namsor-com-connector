@@ -1,0 +1,60 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "personalNames": {
+                    "items": {
+                        "properties": {
+                            "firstName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "id": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "middleName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "prefixOrTitle": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "suffix": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            }
+                        },
+                        "type": "object",
+                        "xml": {
+                            "name": "ParsedFullNameIn"
+                        }
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object",
+            "xml": {
+                "name": "BatchParsedFullNameIn"
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "personalNames": {
+                    "items": {
+                        "properties": {
+                            "countryIso2": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "id": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "zipCode": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            }
+                        },
+                        "type": "object",
+                        "xml": {
+                            "name": "FirstLastNameGeoZippedIn"
+                        }
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object",
+            "xml": {
+                "name": "BatchFirstLastNameGeoZippedIn"
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "scope": {
+            "type": "string"
+        },
+        "code": {
+            "type": "string"
+        },
+        "error": {
+            "type": "string"
+        },
+        "error_description": {
+            "type": "string"
+        }
+    }
+}

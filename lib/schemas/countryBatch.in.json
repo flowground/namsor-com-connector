@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "personalNames": {
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            },
+                            "name": {
+                                "type": "string",
+                                "xml": {
+                                    "attribute": true
+                                }
+                            }
+                        },
+                        "type": "object",
+                        "xml": {
+                            "name": "PersonalNameIn"
+                        }
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object",
+            "xml": {
+                "name": "BatchPersonalNameIn"
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "token": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "addressCity": {
+                    "type": "string"
+                },
+                "addressCountry": {
+                    "type": "string"
+                },
+                "addressLine1": {
+                    "type": "string"
+                },
+                "addressLine2": {
+                    "type": "string"
+                },
+                "addressPostalCode": {
+                    "type": "string"
+                },
+                "addressState": {
+                    "type": "string"
+                },
+                "billingEmail": {
+                    "type": "string"
+                },
+                "customerName": {
+                    "type": "string"
+                },
+                "customerPhone": {
+                    "type": "string"
+                },
+                "preferredCurrency": {
+                    "type": "string"
+                },
+                "vatID": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "xml": {
+                "name": "BillingInfoInOut"
+            }
+        }
+    }
+}

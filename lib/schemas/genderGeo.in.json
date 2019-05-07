@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "firstName": {
+            "required": true,
+            "type": "string"
+        },
+        "lastName": {
+            "required": true,
+            "type": "string"
+        },
+        "countryIso2": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

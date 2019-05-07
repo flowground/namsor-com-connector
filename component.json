@@ -1,0 +1,1079 @@
+{
+    "title": "NamSor API v2",
+    "description": "NamSor API v2 : enpoints to process personal names (gender, cultural origin or ethnicity) in all alphabets or languages. Use GET methods for small tests, but prefer POST methods for higher throughput (batch processing of up to 1000 names at a time). Need something you can't find here? We have many more features coming soon. Let us know, we'll do our best to add it! ",
+    "docsUrl": "https://github.com/namsor",
+    "url": "https://api.apis.guru/v2/specs/namsor.com/2.0.2-beta/openapi.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://v2.namsor.com/NamSorAPIv2 - namsor_v2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "api_key": {
+                "label": "X-API-KEY (api_key)",
+                "viewClass": "TextFieldView",
+                "note": "api_key required"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "availableServices": {
+            "main": "./lib/actions/availableServices.js",
+            "title": "List of API services and usage cost in Units (default is 1=ONE Unit).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/availableServices.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "apiUsage": {
+            "main": "./lib/actions/apiUsage.js",
+            "title": "Print current API usage.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/apiUsage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "apiUsageHistory": {
+            "main": "./lib/actions/apiUsageHistory.js",
+            "title": "Print historical API usage.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/apiUsageHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "apiUsageHistoryAggregate": {
+            "main": "./lib/actions/apiUsageHistoryAggregate.js",
+            "title": "Print historical API usage (in an aggregated view, by service, by day/hour/min).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/apiUsageHistoryAggregate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "availablePlans": {
+            "main": "./lib/actions/availablePlans.js",
+            "title": "List all available plans in the default currency (usd).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/availablePlans.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "availablePlans_1": {
+            "main": "./lib/actions/availablePlans_1.js",
+            "title": "List all available plans in the user's preferred currency.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/availablePlans_1.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "billingCurrencies": {
+            "main": "./lib/actions/billingCurrencies.js",
+            "title": "List possible currency options for billing (USD, EUR, GBP, ...)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/billingCurrencies.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "billingHistory": {
+            "main": "./lib/actions/billingHistory.js",
+            "title": "Read the history billing information (invoices paid via Stripe or manually).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/billingHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "billingInfo": {
+            "main": "./lib/actions/billingInfo.js",
+            "title": "Read the billing information (company name, address, phone, vat ID)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/billingInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "charge": {
+            "main": "./lib/actions/charge.js",
+            "title": "Create a Stripe Customer, based on a payment card token (from secure StripeJS) and email.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/charge.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "chineseNameCandidates": {
+            "main": "./lib/actions/chineseNameCandidates.js",
+            "title": "Identify Chinese name candidates, based on the romanized name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/chineseNameCandidates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "chineseNameCandidatesBatch": {
+            "main": "./lib/actions/chineseNameCandidatesBatch.js",
+            "title": "Identify Chinese name candidates, based on the romanized name (firstName = chineseGivenName; lastName=chineseSurname).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/chineseNameCandidatesBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "chineseNameCandidatesGenderBatch": {
+            "main": "./lib/actions/chineseNameCandidatesGenderBatch.js",
+            "title": "Identify Chinese name candidates, based on the romanized name (firstName = chineseGivenName; lastName=chineseSurname).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/chineseNameCandidatesGenderBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "chineseNameGenderCandidates": {
+            "main": "./lib/actions/chineseNameGenderCandidates.js",
+            "title": "Identify Chinese name candidates, based on the romanized name - having a known gender ('male' or 'female')",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/chineseNameGenderCandidates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "corporateKey": {
+            "main": "./lib/actions/corporateKey.js",
+            "title": "Setting an API Key to a corporate status.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/corporateKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "country": {
+            "main": "./lib/actions/country.js",
+            "title": "[USES 10 UNITS] Infer the likely country of residence of a personal full name, or one surname. Assumes names as they are in the country of residence OR the country of origin.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/country.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "countryBatch": {
+            "main": "./lib/actions/countryBatch.js",
+            "title": "[USES 10 UNITS] Infer the likely country of residence of up to 1000 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/countryBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "debugLevel": {
+            "main": "./lib/actions/debugLevel.js",
+            "title": "Update debug level for a classifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/debugLevel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "diaspora": {
+            "main": "./lib/actions/diaspora.js",
+            "title": "[USES 20 UNITS] Infer the likely ethnicity/diaspora of a personal name, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/diaspora.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "diasporaBatch": {
+            "main": "./lib/actions/diasporaBatch.js",
+            "title": "[USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 1000 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/diasporaBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "gender": {
+            "main": "./lib/actions/gender.js",
+            "title": "Infer the likely gender of a name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/gender.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "genderBatch": {
+            "main": "./lib/actions/genderBatch.js",
+            "title": "Infer the likely gender of up to 1000 names, detecting automatically the cultural context.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/genderBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "genderFull": {
+            "main": "./lib/actions/genderFull.js",
+            "title": "Infer the likely gender of a full name, ex. John H. Smith",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/genderFull.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "genderFullBatch": {
+            "main": "./lib/actions/genderFullBatch.js",
+            "title": "Infer the likely gender of up to 1000 full names, detecting automatically the cultural context.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/genderFullBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "genderFullGeo": {
+            "main": "./lib/actions/genderFullGeo.js",
+            "title": "Infer the likely gender of a full name, given a local context (ISO2 country code).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/genderFullGeo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "genderFullGeoBatch": {
+            "main": "./lib/actions/genderFullGeoBatch.js",
+            "title": "Infer the likely gender of up to 1000 full names, with a given cultural context (country ISO2 code).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/genderFullGeoBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "genderGeo": {
+            "main": "./lib/actions/genderGeo.js",
+            "title": "Infer the likely gender of a name, given a local context (ISO2 country code).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/genderGeo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "genderGeoBatch": {
+            "main": "./lib/actions/genderGeoBatch.js",
+            "title": "Infer the likely gender of up to 1000 names, each given a local context (ISO2 country code).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/genderGeoBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "invalidateCache": {
+            "main": "./lib/actions/invalidateCache.js",
+            "title": "Invalidate system caches.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/invalidateCache.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "learnable": {
+            "main": "./lib/actions/learnable.js",
+            "title": "Activate/deactivate learning from a source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/learnable.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "namsorCounter": {
+            "main": "./lib/actions/namsorCounter.js",
+            "title": "Get the overall API counter",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/namsorCounter.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "origin": {
+            "main": "./lib/actions/origin.js",
+            "title": "[USES 10 UNITS] Infer the likely country of origin of a personal name. Assumes names as they are in the country of origin. For US, CA, AU, NZ and other melting-pots : use 'diaspora' instead.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/origin.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "originBatch": {
+            "main": "./lib/actions/originBatch.js",
+            "title": "[USES 10 UNITS] Infer the likely country of origin of up to 1000 names, detecting automatically the cultural context.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/originBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "parseName": {
+            "main": "./lib/actions/parseName.js",
+            "title": "Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/parseName.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "parseNameGeo": {
+            "main": "./lib/actions/parseNameGeo.js",
+            "title": "Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. For better accuracy, provide a geographic context.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/parseNameGeo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "parseNameBatch": {
+            "main": "./lib/actions/parseNameBatch.js",
+            "title": "Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/parseNameBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "parseNameGeoBatch": {
+            "main": "./lib/actions/parseNameGeoBatch.js",
+            "title": "Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. Giving a local context improves precision. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/parseNameGeoBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "parsedGenderBatch": {
+            "main": "./lib/actions/parsedGenderBatch.js",
+            "title": "Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/parsedGenderBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "parsedGenderGeoBatch": {
+            "main": "./lib/actions/parsedGenderGeoBatch.js",
+            "title": "Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/parsedGenderGeoBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "paymentInfo": {
+            "main": "./lib/actions/paymentInfo.js",
+            "title": "Get the Stripe payment information associated with the current google auth session token.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/paymentInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "phoneCode": {
+            "main": "./lib/actions/phoneCode.js",
+            "title": "[USES 11 UNITS] Infer the likely country and phone prefix, given a personal name and formatted / unformatted phone number.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/phoneCode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "phoneCodeBatch": {
+            "main": "./lib/actions/phoneCodeBatch.js",
+            "title": "[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/phoneCodeBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "phoneCodeGeo": {
+            "main": "./lib/actions/phoneCodeGeo.js",
+            "title": "[USES 11 UNITS] Infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/phoneCodeGeo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "phoneCodeGeoBatch": {
+            "main": "./lib/actions/phoneCodeGeoBatch.js",
+            "title": "[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/phoneCodeGeoBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "procureKey": {
+            "main": "./lib/actions/procureKey.js",
+            "title": "Procure an API Key (sent via Email), based on an auth token. Keep your API Key secret.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/procureKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "redeployUI": {
+            "main": "./lib/actions/redeployUI.js",
+            "title": "Redeploy UI from current dev branch.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/redeployUI.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "redeployUI_1": {
+            "main": "./lib/actions/redeployUI_1.js",
+            "title": "Redeploy UI from current dev branch.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/redeployUI_1.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeUserAccount": {
+            "main": "./lib/actions/removeUserAccount.js",
+            "title": "Subscribe to a give API plan, using the user's preferred or default currency.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeUserAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "shutdown": {
+            "main": "./lib/actions/shutdown.js",
+            "title": "Stop learning and shutdown system.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/shutdown.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "softwareVersion": {
+            "main": "./lib/actions/softwareVersion.js",
+            "title": "Get the current software version",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/softwareVersion.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sourceStats": {
+            "main": "./lib/actions/sourceStats.js",
+            "title": "Print basic source statistics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sourceStats.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "stats": {
+            "main": "./lib/actions/stats.js",
+            "title": "Print basic system statistics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/stats.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "stripeConnect": {
+            "main": "./lib/actions/stripeConnect.js",
+            "title": "Connects a Stripe Account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/stripeConnect.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "subscribePlan": {
+            "main": "./lib/actions/subscribePlan.js",
+            "title": "Subscribe to a give API plan, using the user's preferred or default currency.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/subscribePlan.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateBillingInfo": {
+            "main": "./lib/actions/updateBillingInfo.js",
+            "title": "Sets or update the billing information (company name, address, phone, vat ID)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateBillingInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateLimit": {
+            "main": "./lib/actions/updateLimit.js",
+            "title": "Modifies the hard/soft limit on the API plan's overages (default is 0$ soft limit).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateLimit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updatePaymentDefault": {
+            "main": "./lib/actions/updatePaymentDefault.js",
+            "title": "Update the default Stripe card associated with the current google auth session token.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updatePaymentDefault.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "usRaceEthnicity": {
+            "main": "./lib/actions/usRaceEthnicity.js",
+            "title": "[USES 10 UNITS] Infer a US resident's likely race/ethnicity according to US Census taxonomy W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/usRaceEthnicity.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "usRaceEthnicityBatch": {
+            "main": "./lib/actions/usRaceEthnicityBatch.js",
+            "title": "[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/usRaceEthnicityBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "usRaceEthnicityZIP5": {
+            "main": "./lib/actions/usRaceEthnicityZIP5.js",
+            "title": "[USES 10 UNITS] Infer a US resident's likely race/ethnicity according to US Census taxonomy, using (optional) ZIP5 code info. Output is W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/usRaceEthnicityZIP5.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "usZipRaceEthnicityBatch": {
+            "main": "./lib/actions/usZipRaceEthnicityBatch.js",
+            "title": "[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/usZipRaceEthnicityBatch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "userInfo": {
+            "main": "./lib/actions/userInfo.js",
+            "title": "Get the user profile associated with the current google auth session token.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/userInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "verifyEmail": {
+            "main": "./lib/actions/verifyEmail.js",
+            "title": "Verifies an email, based on token sent to that email",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/verifyEmail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "verifyRemoveEmail": {
+            "main": "./lib/actions/verifyRemoveEmail.js",
+            "title": "Verifies an email, based on token sent to that email",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/verifyRemoveEmail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "vet": {
+            "main": "./lib/actions/vet.js",
+            "title": "Vetting of a source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/vet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

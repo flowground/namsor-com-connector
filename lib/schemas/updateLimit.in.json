@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "usageLimit": {
+            "required": true,
+            "format": "int32",
+            "type": "integer"
+        },
+        "hardOrSoft": {
+            "required": true,
+            "type": "boolean"
+        },
+        "token": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

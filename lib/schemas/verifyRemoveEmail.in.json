@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "emailToken": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
